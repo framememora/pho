@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Join Arya &amp; Nikhil in celebrating their wedding. RSVP, view event details, and explore their love story captured beautifully.">
+    <meta name="theme-color" content="#FDF8F4">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>Arya &amp; Nikhil — Our Wedding</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --blush: #C9A0A0;
+            --blush-deep: #A07878;
+            --cream: #FDF8F4;
+            --cream-warm: #FFFAF5;
+            --gold: #C4A86C;
+            --gold-light: #DBC99A;
+            --text-dark: #2D2218;
+            --text-soft: #5C4D3C;
+            --text-muted: #8B7D6E;
+            --sage: #8B9A7E;
+            --sage-soft: #A8B5A0;
+            --white: #FFFFFF;
+            --shadow-sm: 0 1px 3px rgba(45, 34, 24, 0.06);
+            --shadow-md: 0 4px 16px rgba(45, 34, 24, 0.10);
+            --shadow-lg: 0 12px 40px rgba(45, 34, 24, 0.14);
+            --shadow-xl: 0 20px 60px rgba(45, 34, 24, 0.18);
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 22px;
+            --radius-xl: 28px;
+            --font-script: 'Great Vibes', cursive;
+            --font-heading: 'Playfair Display', 'Georgia', 'Times New Roman', serif;
+            --font-body: 'Lora', 'Georgia', 'Times New Roman', serif;
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            --touch-target: 48px;
+            --max-width: 1200px;
+            --header-height: 64px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overscroll-behavior-y: contain;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: clamp(1rem, 2.5vw, 1.125rem);
+            line-height: 1.7;
+            color: var(--text-dark);
+            background-color: var(--cream-warm);
+            min-height: 100vh;
+            min-height: 100dvh;
+            overflow-x: hidden;
+            letter-spacing: 0.01em;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-overflow-scrolling: touch;
+            cursor: none; /* hidden when custom cursor is active */
+        }
+
+        /* Custom cursor (hidden on touch) */
+        .custom-cursor {
+            position: fixed;
+            top: -20px;
+            left: -20px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(201, 160, 160, 0.25);
+            border: 2px solid var(--blush-deep);
+            pointer-events: none;
+            z-index: 10000;
+            transition: transform 0.15s ease-out, width 0.2s, height 0.2s, background 0.2s;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: multiply;
+        }
+        .custom-cursor.hover-link {
+            transform: translate(-50%, -50%) scale(1.8);
+            background: rgba(201, 160, 160, 0.5);
+            border-width: 1.5px;
+        }
+        @media (hover: none) and (pointer: coarse) {
+            body {
+                cursor: auto;
+            }
+            .custom-cursor {
+                display: none;
+            }
+        }
+
+        /* Skip link */
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 16px;
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 12px 20px;
+            border-radius: var(--radius-sm);
+            z-index: 10001;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: top 0.3s;
+        }
+        .skip-link:focus {
+            top: 10px;
+        }
+
+        /* Header */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: var(--header-height);
+            background: rgba(253, 248, 244, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(45, 34, 24, 0.06);
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+        }
+        .site-header.scrolled {
+            box-shadow: var(--shadow-md);
+            background: rgba(253, 248, 244, 0.95);
+        }
+
+        .header-inner {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .header-logo {
+            font-family: var(--font-script);
+            font-size: clamp(1.3rem, 3vw, 1.6rem);
+            color: var(--blush-deep);
+            text-decoration: none;
+            line-height: 1;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+        }
+
+        /* Hamburger */
+        .nav-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: var(--touch-target);
+            height: var(--touch-target);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+            border-radius: 50%;
+            transition: background var(--transition-fast);
+            -webkit-tap-highlight-color: transparent;
+        }
+        .nav-toggle:hover,
+        .nav-toggle:focus-visible {
+            background: rgba(45, 34, 24, 0.05);
+            outline: none;
+        }
+        .nav-toggle:focus-visible {
+            box-shadow: 0 0 0 3px rgba(160, 120, 120, 0.4);
+        }
+
+        .hamburger-line {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--text-dark);
+            border-radius: 2px;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+        .hamburger-line::before,
+        .hamburger-line::after {
+            content: '';
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--text-dark);
+            border-radius: 2px;
+            position: absolute;
+            left: 0;
+            transition: var(--transition-smooth);
+        }
+        .hamburger-line::before {
+            top: -7px;
+        }
+        .hamburger-line::after {
+            top: 7px;
+        }
+        .nav-toggle.active .hamburger-line {
+            background: transparent;
+        }
+        .nav-toggle.active .hamburger-line::before {
+            top: 0;
+            transform: rotate(45deg);
+        }
+        .nav-toggle.active .hamburger-line::after {
+            top: 0;
+            transform: rotate(-45deg);
+        }
+
+        /* Mobile Nav */
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: min(320px, 85vw);
+            height: 100vh;
+            height: 100dvh;
+            background: var(--cream-warm);
+            z-index: 999;
+            padding: calc(var(--header-height) + 32px) 28px 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: right var(--transition-smooth);
+            box-shadow: var(--shadow-xl);
+            overflow-y: auto;
+        }
+        .nav-menu.open {
+            right: 0;
+        }
+        .nav-menu a {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            padding: 14px 16px;
+            border-radius: var(--radius-sm);
+            transition: all var(--transition-fast);
+            min-height: var(--touch-target);
+            display: flex;
+            align-items: center;
+            letter-spacing: 0.03em;
+        }
+        .nav-menu a:hover,
+        .nav-menu a:focus-visible {
+            background: rgba(160, 120, 120, 0.08);
+            color: var(--blush-deep);
+        }
+        .nav-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(45, 34, 24, 0.45);
+            z-index: 998;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity var(--transition-smooth);
+        }
+        .nav-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+            cursor: pointer;
+        }
+
+        /* Main content */
+        .main-content {
+            padding-top: var(--header-height);
+        }
+
+        /* Hero - looping slideshow */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background: #e8d5d0;
+        }
+        .hero-bg-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center top;
+            opacity: 0;
+            transition: opacity 1.8s ease-in-out;
+            z-index: 0;
+        }
+        .hero-bg-slide.active {
+            opacity: 1;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(253, 248, 244, 0.15) 0%, rgba(45, 34, 24, 0.45) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 40px 24px;
+            max-width: 600px;
+            background: rgba(255, 250, 245, 0.25);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(255,255,255,0.3);
+            animation: heroFadeIn 1.2s ease-out both;
+        }
+        @keyframes heroFadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero-tagline {
+            font-size: clamp(0.85rem, 2vw, 1rem);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            margin-bottom: 16px;
+        }
+        .hero-names {
+            font-family: var(--font-script);
+            font-size: clamp(3.2rem, 9vw, 5.5rem);
+            color: var(--blush-deep);
+            line-height: 1.05;
+            margin-bottom: 8px;
+        }
+        .hero-ampersand {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: clamp(1.4rem, 3.5vw, 2rem);
+            color: var(--gold);
+            font-style: italic;
+            margin: 4px 0 12px;
+        }
+        .hero-date {
+            font-family: var(--font-heading);
+            font-size: clamp(1.1rem, 2.8vw, 1.45rem);
+            letter-spacing: 0.06em;
+            margin-bottom: 28px;
+        }
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 180px;
+            min-height: var(--touch-target);
+            padding: 14px 36px;
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            background: var(--blush-deep);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all var(--transition-bounce);
+            box-shadow: var(--shadow-md);
+            font-weight: 500;
+        }
+        .hero-cta:hover {
+            background: #8B6060;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        .section {
+            padding: 64px 20px;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        @media (min-width: 768px) { .section { padding: 80px 32px; } }
+        @media (min-width: 1024px) { .section { padding: 100px 40px; } }
+        .section-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 5vw, 2.6rem);
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        /* Countdown */
+        .countdown-section {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            margin: -40px 16px 40px;
+            max-width: 580px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+        }
+        .countdown-inner {
+            padding: 28px 20px 24px;
+            text-align: center;
+        }
+        .countdown-heading {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            letter-spacing: 0.08em;
+            color: var(--text-soft);
+            margin-bottom: 18px;
+        }
+        .countdown-grid {
+            display: flex;
+            justify-content: center;
+            gap: clamp(8px, 3vw, 20px);
+            flex-wrap: wrap;
+        }
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 60px;
+        }
+        .countdown-number {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 6vw, 3.2rem);
+            font-weight: 700;
+            color: var(--blush-deep);
+            background: var(--cream-warm);
+            border-radius: var(--radius-md);
+            padding: 10px 14px;
+            min-width: 70px;
+            box-shadow: var(--shadow-sm);
+        }
+        .countdown-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-top: 6px;
+        }
+        .countdown-pulse {
+            animation: countPulse 0.6s ease-out;
+        }
+        @keyframes countPulse {
+            0% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+
+        /* Post-wedding */
+        .post-wedding-banner {
+            display: none;
+            text-align: center;
+            background: var(--sage-soft);
+            color: var(--white);
+            padding: 16px 24px;
+            border-radius: var(--radius-lg);
+            margin: -30px 16px 30px;
+            max-width: 580px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            z-index: 5;
+        }
+        .post-wedding-banner.visible {
+            display: block;
+            animation: fadeSlideIn 0.7s ease-out;
+        }
+        @keyframes fadeSlideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Story */
+        .story-section {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 48px 24px;
+            margin: 0 16px 32px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: var(--shadow-sm);
+        }
+        .story-text {
+            font-style: italic;
+            color: var(--text-soft);
+            text-align: center;
+            max-width: 540px;
+            margin: 0 auto;
+        }
+        .story-signature {
+            font-family: var(--font-script);
+            font-size: 2rem;
+            color: var(--blush-deep);
+            text-align: center;
+        }
+
+        /* Event details */
+        .event-details {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        @media (min-width: 768px) { .event-details { grid-template-columns: 1fr 1fr; } }
+        .event-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 28px 22px;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+        .map-embed {
+            width: 100%;
+            height: 220px;
+            border: none;
+            border-radius: var(--radius-md);
+            margin-top: 8px;
+            background: #e8e0d8;
+        }
+
+        /* Auto‑scrolling ribbon */
+        .ribbon-container {
+            width: 100%;
+            overflow: hidden;
+            margin: 32px 0;
+        }
+        .ribbon-track {
+            display: flex;
+            width: max-content;
+            animation: scrollRibbon 35s linear infinite;
+        }
+        .ribbon-track img {
+            height: 160px;
+            width: auto;
+            object-fit: cover;
+            border-radius: var(--radius-sm);
+            margin-right: 12px;
+            flex-shrink: 0;
+            filter: brightness(0.95) contrast(1.03);
+        }
+        @media (min-width: 600px) { .ribbon-track img { height: 200px; margin-right: 16px; } }
+        @keyframes scrollRibbon {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        @media (min-width: 600px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (min-width: 900px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } }
+        .gallery-item {
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            background: #e8e0d8;
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+        }
+        .gallery-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+        .gallery-item:hover img { transform: scale(1.05); }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(20, 14, 8, 0.96);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity var(--transition-smooth);
+        }
+        .lightbox.active { opacity: 1; pointer-events: auto; }
+        .lightbox-img {
+            max-width: 92vw;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: var(--radius-md);
+        }
+        .lightbox-close, .lightbox-nav {
+            position: absolute;
+            width: var(--touch-target);
+            height: var(--touch-target);
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            border-radius: 50%;
+            color: var(--white);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2001;
+        }
+        .lightbox-close { top: 16px; right: 16px; font-size: 1.4rem; }
+        .lightbox-prev { left: 12px; top: 50%; transform: translateY(-50%); font-size: 1.3rem; }
+        .lightbox-next { right: 12px; top: 50%; transform: translateY(-50%); font-size: 1.3rem; }
+
+        /* Photography credit */
+        .photographer-section {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 40px 24px;
+            max-width: 620px;
+            margin: 0 auto 32px;
+            text-align: center;
+        }
+        .photographer-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 16px;
+        }
+        .photographer-link {
+            color: var(--blush-deep);
+            text-decoration: none;
+            border-bottom: 1.5px solid currentColor;
+        }
+
+        /* Registry */
+        .registry-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center;
+        }
+        .registry-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-heading);
+            background: var(--white);
+            padding: 14px 24px;
+            border-radius: 50px;
+            box-shadow: var(--shadow-sm);
+            text-decoration: none;
+            color: var(--text-dark);
+            border: 1px solid rgba(45,34,24,0.06);
+            transition: all var(--transition-bounce);
+            min-height: var(--touch-target);
+        }
+        .registry-link:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+        /* RSVP Form - simplified, no dietary */
+        .rsvp-form-wrapper {
+            max-width: 560px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 36px 22px;
+            box-shadow: var(--shadow-md);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            min-height: var(--touch-target);
+            padding: 12px 16px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            border: 1.5px solid rgba(45,34,24,0.15);
+            border-radius: var(--radius-sm);
+            background: var(--cream-warm);
+            color: var(--text-dark);
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--blush);
+            box-shadow: 0 0 0 4px rgba(201,160,160,0.15);
+        }
+        .form-submit {
+            width: 100%;
+            min-height: var(--touch-target);
+            padding: 14px 28px;
+            font-family: var(--font-heading);
+            background: var(--blush-deep);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all var(--transition-bounce);
+            box-shadow: var(--shadow-md);
+        }
+        .form-submit:hover { background: #8B6060; box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+        .form-success { display: none; text-align: center; color: var(--sage); font-size: 1.1rem; }
+        .form-success.visible { display: block; animation: fadeSlideIn 0.5s ease-out; }
+
+        /* Footer */
+        .site-footer {
+            text-align: center;
+            padding: 28px 20px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(45,34,24,0.06);
+        }
+        .heart {
+            color: var(--blush-deep);
+            display: inline-block;
+            animation: heartbeat 1.5s infinite;
+        }
+        @keyframes heartbeat {
+            0%,100% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.15); }
+        }
+
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s, transform 0.7s;
+        }
+        .fade-in-section.visible { opacity: 1; transform: translateY(0); }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+            .ribbon-track { animation: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="custom-cursor" id="customCursor" aria-hidden="true"></div>
+
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <header class="site-header" role="banner">
+        <div class="header-inner">
+            <a href="#" class="header-logo">Arya &amp; Nikhil</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navMenu">
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+    <nav class="nav-menu" id="navMenu" role="navigation" aria-label="Main navigation">
+        <a href="#hero" data-nav-close>Home</a>
+        <a href="#countdown" data-nav-close>Countdown</a>
+        <a href="#story" data-nav-close>Our Story</a>
+        <a href="#events" data-nav-close>Event Details</a>
+        <a href="#gallery" data-nav-close>Gallery</a>
+        <a href="#photography" data-nav-close>Photography</a>
+        <a href="#registry" data-nav-close>Registry</a>
+        <a href="#rsvp" data-nav-close>RSVP</a>
+    </nav>
+
+    <main class="main-content" id="main-content">
+
+        <!-- Hero -->
+        <section class="hero" id="hero">
+            <div class="hero-bg-slide" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=75&fit=crop&auto=format');"></div>
+            <div class="hero-bg-slide" style="background-image: url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1200&q=75&fit=crop&auto=format');"></div>
+            <div class="hero-bg-slide" style="background-image: url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=1200&q=75&fit=crop&auto=format');"></div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <p class="hero-tagline">Together with our families</p>
+                <h1 class="hero-names">Arya &amp; Nikhil</h1>
+                <span class="hero-ampersand">are getting married</span>
+                <p class="hero-date">June 20, 2026 &bull; 3:00 PM</p>
+                <a href="#rsvp" class="hero-cta" id="heroCta">RSVP Now</a>
+            </div>
+        </section>
+
+        <!-- Countdown -->
+        <section class="countdown-section fade-in-section" id="countdown">
+            <div class="countdown-inner" id="countdownInner">
+                <p class="countdown-heading">Counting down to our special day</p>
+                <div class="countdown-grid">
+                    <div class="countdown-item"><span class="countdown-number" id="countDays">00</span><span class="countdown-label">Days</span></div>
+                    <div class="countdown-item"><span class="countdown-number" id="countHours">00</span><span class="countdown-label">Hours</span></div>
+                    <div class="countdown-item"><span class="countdown-number" id="countMinutes">00</span><span class="countdown-label">Minutes</span></div>
+                    <div class="countdown-item"><span class="countdown-number" id="countSeconds">00</span><span class="countdown-label">Seconds</span></div>
+                </div>
+            </div>
+        </section>
+
+        <div class="post-wedding-banner" id="postWeddingBanner" role="status">
+            <p class="married-since">💍 Thank you for celebrating with us!</p>
+            <p class="elapsed" id="elapsedText"></p>
+        </div>
+
+        <!-- Our Story -->
+        <section class="section fade-in-section" id="story">
+            <p class="section-label">Our Journey</p>
+            <h2 class="section-title">Our Story</h2>
+            <div class="story-section">
+                <p class="story-text">It all began on a quiet autumn evening…</p>
+                <div class="story-divider" style="width:50px; height:2px; background:var(--gold-light); margin:28px auto;"></div>
+                <p class="story-signature">Arya &amp; Nikhil</p>
+            </div>
+        </section>
+
+        <!-- Auto‑scrolling ribbon -->
+        <div class="ribbon-container fade-in-section">
+            <div class="ribbon-track" id="ribbonTrack"></div>
+        </div>
+
+        <!-- Event Details -->
+        <section class="section fade-in-section" id="events">
+            <p class="section-label">Join Us</p>
+            <h2 class="section-title">Event Details</h2>
+            <div class="event-details">
+                <div class="event-card"><span>📅</span><h3>Date &amp; Time</h3><p>Saturday, <strong>June 20, 2026</strong><br>3:00 PM – 11:00 PM</p></div>
+                <div class="event-card"><span>📍</span><h3>Venue</h3><p>The Grand Garden Estate<br>42 Blossom Lane, Napa Valley</p></div>
+            </div>
+            <div class="event-card" style="max-width:700px;margin:20px auto 0;">
+                <span>🗺️</span><h3>Getting Here</h3>
+                <iframe class="map-embed" title="Venue map" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d200726.25492835393!2d-122.40563355!3d38.29753875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085064c2cfc2b6b%3A0x6e07b3b3d0b6f6b!2sNapa%20Valley%2C%20CA!5e0!3m2!1sen!2sus!4v1714000000000" allowfullscreen=""></iframe>
+            </div>
+        </section>
+
+        <!-- Gallery -->
+        <section class="section fade-in-section" id="gallery">
+            <p class="section-label">Captured Moments</p>
+            <h2 class="section-title">Gallery</h2>
+            <div class="gallery-grid" id="galleryGrid"></div>
+        </section>
+
+        <!-- Photography Credit -->
+        <section class="section fade-in-section" id="photography">
+            <p class="section-label">The Art Behind the Lens</p>
+            <h2 class="section-title">Photography</h2>
+            <div class="photographer-section">
+                <img class="photographer-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop&crop=face&auto=format" alt="Photographer portrait" loading="lazy">
+                <p class="photographer-name">Lumière & Co.</p>
+                <p class="photographer-desc">Fine‑art wedding photography capturing the unseen poetry of your day.</p>
+                <a href="https://www.example-photography.com" target="_blank" rel="noopener" class="photographer-link">Explore the Portfolio ↗</a>
+            </div>
+        </section>
+
+        <!-- Registry -->
+        <section class="section fade-in-section" id="registry">
+            <p class="section-label">With Gratitude</p>
+            <h2 class="section-title">Gift Registry</h2>
+            <div class="registry-list">
+                <a href="https://www.zola.com/" target="_blank" class="registry-link">🎁 Zola Registry</a>
+                <a href="https://www.crateandbarrel.com/" target="_blank" class="registry-link">🏠 Crate &amp; Barrel</a>
+                <a href="https://www.honeyfund.com/" target="_blank" class="registry-link">✈️ Honeyfund</a>
+            </div>
+        </section>
+
+        <!-- RSVP Form (simplified, no dietary) -->
+        <section class="section fade-in-section" id="rsvp">
+            <p class="section-label">Kindly Respond</p>
+            <h2 class="section-title">RSVP</h2>
+            <div class="rsvp-form-wrapper">
+                <form id="rsvpForm" novalidate>
+                    <div class="form-group">
+                        <label for="guestName">Full Name *</label>
+                        <input type="text" id="guestName" name="guestName" required placeholder="Your full name" minlength="2">
+                    </div>
+                    <div class="form-group">
+                        <label for="guestEmail">Email Address *</label>
+                        <input type="email" id="guestEmail" name="guestEmail" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="attendance">Will you be attending? *</label>
+                        <select id="attendance" name="attendance" required>
+                            <option value="">Please select…</option>
+                            <option value="yes">Joyfully, yes!</option>
+                            <option value="no">Sadly, no</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="guestCount">Number of Guests</label>
+                        <select id="guestCount" name="guestCount">
+                            <option value="1">1</option>
+                            <option value="2" selected>2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">A Note for the Couple</label>
+                        <textarea id="message" name="message" rows="3" placeholder="Share your warm wishes…"></textarea>
+                    </div>
+                    <button type="submit" class="form-submit" id="rsvpSubmit">Send RSVP</button>
+                </form>
+                <div class="form-success" id="formSuccess" role="status">✨ Thank you! Your RSVP has been received with love.</div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Arya &amp; Nikhil. Crafted with <span class="heart" aria-label="love">♥</span> love.</p>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" aria-hidden="true" aria-label="Image lightbox">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">&times;</button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous image">‹</button>
+        <img class="lightbox-img" id="lightboxImg" src="" alt="">
+        <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next image">›</button>
+    </div>
+
+    <script>
+        (function() {
+            const WEDDING_DATE_STR = '2026-06-20T15:00:00-04:00';
+            const weddingDate = new Date(WEDDING_DATE_STR);
+            const isPastWedding = () => new Date() >= weddingDate;
+
+            // Custom cursor
+            const cursor = document.getElementById('customCursor');
+            if (cursor && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+                document.body.style.cursor = 'none';
+                document.addEventListener('mousemove', e => {
+                    cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+                });
+                const hoverTargets = document.querySelectorAll('a, button, .gallery-item, input, select, textarea');
+                hoverTargets.forEach(el => {
+                    el.addEventListener('mouseenter', () => cursor.classList.add('hover-link'));
+                    el.addEventListener('mouseleave', () => cursor.classList.remove('hover-link'));
+                });
+            }
+
+            // Hero slideshow
+            const slides = document.querySelectorAll('.hero-bg-slide');
+            let currentSlide = 0;
+            if (slides.length > 0) {
+                slides[0].classList.add('active');
+                if (slides.length > 1) {
+                    setInterval(() => {
+                        slides[currentSlide].classList.remove('active');
+                        currentSlide = (currentSlide + 1) % slides.length;
+                        slides[currentSlide].classList.add('active');
+                    }, 5000);
+                }
+            }
+
+            // Ribbon
+            const ribbonTrack = document.getElementById('ribbonTrack');
+            if (ribbonTrack) {
+                const ribbonSrcs = [
+                    'https://images.unsplash.com/photo-1519741497674-611481863552?w=400&h=250&fit=crop',
+                    'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&h=250&fit=crop',
+                    'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=400&h=250&fit=crop',
+                    'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=400&h=250&fit=crop',
+                    'https://images.unsplash.com/photo-1507504031003-b417219a0fde?w=400&h=250&fit=crop',
+                    'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&h=250&fit=crop',
+                    'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=400&h=250&fit=crop',
+                    'https://images.unsplash.com/photo-1525772764200-be829a350797?w=400&h=250&fit=crop',
+                ];
+                for (let i = 0; i < 2; i++) {
+                    ribbonSrcs.forEach(src => {
+                        const img = document.createElement('img');
+                        img.src = src;
+                        img.alt = 'Wedding moment';
+                        img.loading = 'lazy';
+                        ribbonTrack.appendChild(img);
+                    });
+                }
+            }
+
+            // Gallery & Lightbox
+            const galleryImages = [
+                { src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=70&fit=crop&auto=format', alt: 'Bride and groom embracing' },
+                { src: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&q=70&fit=crop&auto=format', alt: 'Elegant table setting' },
+                { src: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&q=70&fit=crop&auto=format', alt: 'Wedding bouquet' },
+                { src: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&q=70&fit=crop&auto=format', alt: 'Hand in hand at sunset' },
+                { src: 'https://images.unsplash.com/photo-1507504031003-b417219a0fde?w=600&q=70&fit=crop&auto=format', alt: 'Rings on velvet' },
+                { src: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&q=70&fit=crop&auto=format', alt: 'Sparkler send-off' },
+                { src: 'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600&q=70&fit=crop&auto=format', alt: 'First dance' },
+                { src: 'https://images.unsplash.com/photo-1525772764200-be829a350797?w=600&q=70&fit=crop&auto=format', alt: 'Wedding cake' },
+            ];
+            const galleryGrid = document.getElementById('galleryGrid');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            let currentLbIndex = 0;
+
+            function buildGallery() {
+                if (!galleryGrid) return;
+                galleryGrid.innerHTML = '';
+                galleryImages.forEach((img, idx) => {
+                    const item = document.createElement('div');
+                    item.className = 'gallery-item';
+                    item.dataset.index = idx;
+                    item.setAttribute('tabindex', '0');
+                    const imageEl = document.createElement('img');
+                    imageEl.src = img.src;
+                    imageEl.alt = img.alt;
+                    imageEl.loading = 'lazy';
+                    item.appendChild(imageEl);
+                    item.addEventListener('click', () => openLightbox(idx));
+                    galleryGrid.appendChild(item);
+                });
+            }
+            function openLightbox(index) {
+                currentLbIndex = index;
+                updateLightboxImage();
+                lightbox.classList.add('active');
+                lightbox.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+                document.getElementById('lightboxClose').focus();
+            }
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                lightbox.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+            function updateLightboxImage() {
+                lightboxImg.src = galleryImages[currentLbIndex].src;
+                lightboxImg.alt = galleryImages[currentLbIndex].alt;
+            }
+            document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+            document.getElementById('lightboxNext').addEventListener('click', () => {
+                currentLbIndex = (currentLbIndex + 1) % galleryImages.length;
+                updateLightboxImage();
+            });
+            document.getElementById('lightboxPrev').addEventListener('click', () => {
+                currentLbIndex = (currentLbIndex - 1 + galleryImages.length) % galleryImages.length;
+                updateLightboxImage();
+            });
+            lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('active')) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowRight') document.getElementById('lightboxNext').click();
+                if (e.key === 'ArrowLeft') document.getElementById('lightboxPrev').click();
+            });
+
+            // Countdown
+            const countDays = document.getElementById('countDays');
+            const countHours = document.getElementById('countHours');
+            const countMinutes = document.getElementById('countMinutes');
+            const countSeconds = document.getElementById('countSeconds');
+            const postBanner = document.getElementById('postWeddingBanner');
+            const elapsedText = document.getElementById('elapsedText');
+            const heroCta = document.getElementById('heroCta');
+            const countdownSection = document.getElementById('countdown');
+            let previousSeconds = -1, countdownInterval;
+
+            function updateCountdown() {
+                const now = new Date();
+                const diff = weddingDate - now;
+                if (diff <= 0) {
+                    switchToPostWedding(now);
+                    clearInterval(countdownInterval);
+                    return;
+                }
+                const totalSeconds = Math.floor(diff / 1000);
+                const days = Math.floor(totalSeconds / 86400);
+                const hours = Math.floor((totalSeconds % 86400) / 3600);
+                const minutes = Math.floor((totalSeconds % 3600) / 60);
+                const seconds = totalSeconds % 60;
+                countDays.textContent = String(days).padStart(2, '0');
+                countHours.textContent = String(hours).padStart(2, '0');
+                countMinutes.textContent = String(minutes).padStart(2, '0');
+                countSeconds.textContent = String(seconds).padStart(2, '0');
+                if (seconds !== previousSeconds && countSeconds) {
+                    countSeconds.classList.remove('countdown-pulse');
+                    void countSeconds.offsetWidth;
+                    countSeconds.classList.add('countdown-pulse');
+                }
+                previousSeconds = seconds;
+            }
+            function switchToPostWedding(now) {
+                if (countdownSection) countdownSection.style.display = 'none';
+                if (postBanner) postBanner.classList.add('visible');
+                const elapsedMs = now - weddingDate;
+                const days = Math.floor(elapsedMs / 86400000);
+                const hours = Math.floor((elapsedMs % 86400000) / 3600000);
+                const minutes = Math.floor((elapsedMs % 3600000) / 60000);
+                if (elapsedText) elapsedText.textContent = `Married for ${days} day${days!==1?'s':''}, ${hours} hour${hours!==1?'s':''}, ${minutes} minute${minutes!==1?'s':''}… and counting!`;
+                if (heroCta) {
+                    heroCta.textContent = 'View Photos';
+                    heroCta.setAttribute('href', '#gallery');
+                }
+            }
+            function initCountdown() {
+                if (isPastWedding()) { switchToPostWedding(new Date()); return; }
+                updateCountdown();
+                countdownInterval = setInterval(updateCountdown, 1000);
+            }
+
+            // Navigation
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.getElementById('navMenu');
+            const navOverlay = document.getElementById('navOverlay');
+            function openNav() {
+                navMenu.classList.add('open');
+                navOverlay.classList.add('active');
+                navToggle.classList.add('active');
+                navToggle.setAttribute('aria-expanded', 'true');
+                document.body.style.overflow = 'hidden';
+            }
+            function closeNav() {
+                navMenu.classList.remove('open');
+                navOverlay.classList.remove('active');
+                navToggle.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+            navToggle.addEventListener('click', () => navMenu.classList.contains('open') ? closeNav() : openNav());
+            navOverlay.addEventListener('click', closeNav);
+            document.querySelectorAll('[data-nav-close]').forEach(link => link.addEventListener('click', closeNav));
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && navMenu.classList.contains('open')) closeNav(); });
+
+            // Header shadow
+            window.addEventListener('scroll', () => {
+                document.querySelector('.site-header').classList.toggle('scrolled', window.scrollY > 20);
+            }, { passive: true });
+
+            // Scroll fade-in
+            const fadeSections = document.querySelectorAll('.fade-in-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            fadeSections.forEach(s => observer.observe(s));
+
+            // RSVP (simplified, no dietary)
+            const form = document.getElementById('rsvpForm');
+            const formSuccess = document.getElementById('formSuccess');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const name = document.getElementById('guestName');
+                    const email = document.getElementById('guestEmail');
+                    const attendance = document.getElementById('attendance');
+                    let valid = true;
+                    if (!name.value.trim() || name.value.trim().length < 2) { name.style.borderColor = '#c0392b'; valid = false; } else name.style.borderColor = '';
+                    if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) { email.style.borderColor = '#c0392b'; valid = false; } else email.style.borderColor = '';
+                    if (!attendance.value) { attendance.style.borderColor = '#c0392b'; valid = false; } else attendance.style.borderColor = '';
+                    if (!valid) return;
+                    const btn = document.getElementById('rsvpSubmit');
+                    btn.disabled = true;
+                    btn.textContent = 'Sending…';
+                    setTimeout(() => {
+                        form.style.display = 'none';
+                        formSuccess.classList.add('visible');
+                        btn.disabled = false;
+                        btn.textContent = 'Send RSVP';
+                    }, 900);
+                });
+            }
+
+            // Initialize
+            buildGallery();
+            initCountdown();
+            if (isPastWedding() && heroCta) {
+                heroCta.textContent = 'View Photos';
+                heroCta.setAttribute('href', '#gallery');
+            }
+        })();
+    </script>
+</body>
+</html>
